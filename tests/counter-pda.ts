@@ -21,9 +21,7 @@ describe("counter-pda", () => {
     await program.methods
       .initialize()
       .accounts({
-        counter: counterPda,
         authority: authority,
-        systemProgram: anchor.web3.SystemProgram.programId,
       })
       .rpc();
 
@@ -39,7 +37,6 @@ describe("counter-pda", () => {
       await program.methods
         .increment()
         .accounts({
-          counter: counterPda,
           authority: authority,
         })
         .rpc();
@@ -54,9 +51,7 @@ describe("counter-pda", () => {
       await program.methods
         .initialize()
         .accounts({
-          counter: counterPda,
           authority: authority,
-          systemProgram: anchor.web3.SystemProgram.programId,
         })
         .rpc();
       assert.fail("Expected duplicate initialize to throw");
